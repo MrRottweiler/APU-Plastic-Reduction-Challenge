@@ -1,0 +1,1225 @@
+/* APU Plastic Reduction Challenge - Main Stylesheet (Completed and Enhanced) */
+
+/* ===== CSS Variables (Enhanced for Sustainability Theme) ===== */
+:root {
+    /* Updated Primary/Thematic Colors for a more natural/organic green */
+    --primary-color: #388e3c;
+    /* Forest Green (Darker, more natural primary) */
+    --primary-dark: #1b5e20;
+    /* Deep Moss Green */
+    --primary-light: #66bb6a;
+    /* Earthy/Light Green */
+    --secondary-color: #c8e6c9;
+    /* Very Light Mint/Sage (For contrast/background highlights) */
+    --accent-color: #ffc107;
+    /* Gold/Sun (for highlights, classic) */
+    --accent-dark: #f57c00;
+    /* Darker Orange/Amber */
+
+    /* Status Colors - Maintained */
+    --success-color: #4caf50;
+    --error-color: #f44336;
+    --warning-color: #ff9800;
+    --info-color: #2196f3;
+
+    /* Text Colors */
+    --text-primary: #212121;
+    --text-secondary: #616161;
+    /* Slightly softer secondary text */
+    --text-light: #ffffff;
+
+    /* Background Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9fdf9;
+    /* Very light, slightly green-tinted background */
+    --bg-dark: #37474f;
+    /* Dark Slate Grey for footer */
+
+    /* Borders & Shadows */
+    --border-color: #e0e0e0;
+    --border-radius: 12px;
+    /* Slightly larger radius for a softer look */
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    /* Softer, broader shadow */
+    --box-shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+    /* Enhanced hover shadow */
+    --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* For form inputs */
+
+    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Smoother, more expressive transition */
+}
+
+/* ===== Reset & Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.7;
+    /* Slightly increased line height for readability */
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* H1 inside site-title link should look like a normal heading */
+.site-title h1 {
+    font-size: 1.8rem;
+    /* Slightly larger title */
+    font-weight: 800;
+    /* Bolder title */
+    color: var(--primary-dark);
+}
+
+/* ===== Container ===== */
+.container {
+    width: 100%;
+    max-width: 1280px;
+    /* Slightly wider max-width */
+    margin: 0 auto;
+    padding: 0 25px;
+    /* Slightly increased side padding */
+}
+
+/* ===== Header ===== */
+.main-header {
+    background-color: var(--bg-primary);
+    box-shadow: var(--box-shadow);
+    /* ENFORCING NON-STICKY POSITION */
+    position: static !important;
+    top: auto !important;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 0;
+    /* More vertical padding */
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+/* DESKTOP NAVIGATION */
+.main-nav {
+    display: flex;
+    gap: 1.5rem;
+    /* Increased gap */
+    align-items: center;
+    flex-wrap: wrap;
+    transition: var(--transition);
+}
+
+.nav-link {
+    padding: 0.75rem 1.25rem;
+    /* Larger padding for easier click */
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    background-color: var(--secondary-color);
+    /* Use light sage color for hover */
+    color: var(--primary-dark);
+}
+
+.nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    box-shadow: var(--box-shadow);
+    /* Add shadow to active link */
+}
+
+/* Hide mobile toggle elements on DESKTOP */
+.menu-toggle,
+.nav-icon {
+    display: none;
+}
+
+
+/* ===== Main Content ===== */
+.main-content {
+    flex: 1;
+    padding: 3rem 0;
+    /* More padding */
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    /* Gradient using a more nature-themed blue-green transition */
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    color: var(--text-light);
+    padding: 5rem 0;
+    /* More vertical space */
+    text-align: center;
+    border-radius: var(--border-radius);
+    margin-bottom: 3rem;
+    box-shadow: var(--box-shadow);
+}
+
+.hero-title {
+    font-size: 3rem;
+    /* Larger title */
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    /* Larger subtitle */
+    margin-bottom: 3rem;
+    opacity: 0.95;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    /* Subtle text shadow for pop */
+}
+
+/* ===== Buttons (FIXED: Hover text visibility ensured) ===== */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    /* Larger buttons */
+    border-radius: 25px;
+    /* Pill-shaped buttons */
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    /* White text on Green */
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    /* Explicitly keep text white for safety */
+    transform: translateY(-3px);
+    /* More noticeable lift */
+    box-shadow: var(--box-shadow-hover);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--primary-dark);
+    /* Dark text on light background */
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-light);
+    color: var(--text-light);
+    /* Explicitly change text to white for contrast on hover */
+    border-color: var(--primary-dark);
+}
+
+.btn-large {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.25rem;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* ===== Delete Button Styles ===== */
+.btn-delete,
+.btn-danger {
+    background-color: var(--error-color);
+    color: var(--text-light);
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.btn-delete:hover,
+.btn-danger:hover {
+    background-color: #d32f2f;
+    /* Darker red on hover */
+    color: var(--text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+    /* Red shadow */
+    text-decoration: none;
+    /* Remove underline on hover */
+}
+
+.btn-delete:active,
+.btn-danger:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(244, 67, 54, 0.3);
+}
+
+/* Alternative: Outline Delete Button (Less Aggressive) */
+.btn-delete-outline {
+    background-color: transparent;
+    color: var(--error-color);
+    padding: 0.6rem 1.2rem;
+    border: 2px solid var(--error-color);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.btn-delete-outline:hover {
+    background-color: var(--error-color);
+    color: var(--text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+    text-decoration: none;
+}
+
+/* Small delete button for tables/inline use */
+.btn-delete-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    border-radius: 6px;
+}
+
+/* Delete link style (for text-based delete actions) */
+.delete-link,
+.action-link.delete-link {
+    color: var(--error-color);
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.delete-link:hover,
+.action-link.delete-link:hover {
+    color: var(--text-light);
+    background-color: var(--error-color);
+    text-decoration: none;
+}
+
+/* Certificate Actions Container */
+.certificate-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+}
+
+.certificate-actions .btn {
+    flex: 1;
+    min-width: 120px;
+}
+
+/* Delete form buttons in tables */
+.delete-form {
+    display: inline-block;
+    margin: 0;
+}
+
+.delete-form .btn-delete {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+}
+
+/* Confirmation styling (when JS adds a confirming class) */
+.btn-delete.confirming {
+    background-color: var(--warning-color);
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ===== Stats Section ===== */
+.stats-section {
+    margin: 3rem 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    /* Larger section titles */
+    margin-bottom: 3rem;
+    color: var(--primary-dark);
+    font-weight: 800;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    /* Increased gap */
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: var(--bg-primary);
+    padding: 2.5rem;
+    /* More padding */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: var(--transition);
+    border-left: 5px solid var(--primary-light);
+    /* Accent border */
+}
+
+.stat-card:hover {
+    transform: translateY(-8px);
+    /* More pronounced lift */
+    box-shadow: var(--box-shadow-hover);
+}
+
+.stat-value {
+    font-size: 3rem;
+    /* Larger value */
+    font-weight: 900;
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    /* Slightly larger label */
+    font-weight: 600;
+}
+
+/* ===== Leaderboard ===== */
+.leaderboard-section {
+    margin: 4rem 0;
+}
+
+.leaderboard {
+    background: var(--bg-primary);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: separate;
+    /* Use 'separate' for better rounded corners/shadows */
+    border-spacing: 0;
+    overflow: hidden;
+    /* Important for table border-radius */
+}
+
+.leaderboard-table thead {
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+    padding: 1.2rem;
+    text-align: left;
+}
+
+.leaderboard-table th:first-child {
+    border-top-left-radius: var(--border-radius);
+}
+
+.leaderboard-table th:last-child {
+    border-top-right-radius: var(--border-radius);
+}
+
+.leaderboard-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.leaderboard-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-table tbody tr:hover {
+    background-color: var(--secondary-color);
+}
+
+.rank-badge {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    min-width: 45px;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+}
+
+.rank-1 {
+    background-color: var(--accent-color);
+    color: var(--text-primary);
+}
+
+.rank-2 {
+    background-color: #bdbdbd;
+    /* Silver */
+    color: var(--text-primary);
+}
+
+.rank-3 {
+    background-color: #a1887f;
+    /* Bronze */
+    color: var(--text-light);
+}
+
+/* ===== Authentication Pages ===== */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    /* Soft, friendly auth background */
+    background: linear-gradient(135deg, var(--bg-secondary), var(--primary-light));
+}
+
+.auth-box {
+    background: var(--bg-primary);
+    padding: 4rem;
+    /* More padding */
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    /* Stronger auth shadow */
+    max-width: 450px;
+    width: 100%;
+    border-top: 5px solid var(--primary-color);
+}
+
+.auth-title {
+    color: var(--primary-dark);
+    font-size: 2.25rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    font-weight: 800;
+}
+
+.auth-subtitle {
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.auth-form {
+    margin-bottom: 2rem;
+}
+
+.auth-links {
+    text-align: center;
+}
+
+.auth-links p {
+    margin: 0.75rem 0;
+}
+
+/* ===== Forms ===== */
+.form-group {
+    margin-bottom: 1.75rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    /* Label text is primary color */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    /* More vertical padding */
+    border: 1px solid var(--border-color);
+    /* Thinner border */
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-inset);
+    /* Soft inner shadow */
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(56, 142, 60, 0.2);
+    /* Soft focus ring */
+    background-color: var(--secondary-color);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.4rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Form row for side-by-side fields */
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.form-group-half {
+    flex: 1;
+    min-width: 200px;
+}
+
+.form-text-muted {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* ===== Cards ===== */
+.card {
+    background: var(--bg-primary);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2rem;
+}
+
+.card-title {
+    color: var(--primary-dark);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 0.75rem;
+}
+
+/* ===== Alerts ===== */
+.alert {
+    padding: 1.25rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    color: var(--primary-dark);
+    border-left: 5px solid var(--success-color);
+}
+
+.alert-error {
+    background-color: #ffebee;
+    color: #c62828;
+    border-left: 5px solid var(--error-color);
+}
+
+.alert-warning {
+    background-color: #fff3e0;
+    color: #e65100;
+    border-left: 5px solid var(--warning-color);
+}
+
+.alert-info {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border-left: 5px solid var(--info-color);
+}
+
+/* ===== Dashboard ===== */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.dashboard-header h2 {
+    color: var(--primary-dark);
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+/* ===== Certificates ===== */
+.certificates-section {
+    margin: 4rem 0;
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.certificate-card {
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+
+    /* --- FIX: Set default text color to dark for visibility on light backgrounds --- */
+    color: var(--text-primary);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.certificate-card::before {
+    content: '★';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 5rem;
+    opacity: 0.1;
+    line-height: 1;
+}
+
+.certificate-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ------------------------------------------- */
+/* ===== NEW CERTIFICATE DESIGN STYLES ===== */
+/* ------------------------------------------- */
+
+/* Professional Style - Clean, Formal Green */
+.certificate-professional {
+    /* Use a gradient of the primary theme color */
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    /* Override to set text to white for high contrast on the dark gradient */
+    color: var(--text-light);
+}
+
+/* Modern Style - Bright, Energetic */
+.certificate-modern {
+    /* Use a blue/cyan gradient for a 'modern' digital look */
+    background: linear-gradient(135deg, #00bcd4, #00e5ff);
+    /* Keep text dark (inherited from .certificate-card or explicitly set) */
+    color: var(--text-primary);
+}
+
+/* Classic Style - Gold/Accented Theme */
+.certificate-classic {
+    /* Use an amber/gold gradient */
+    background: linear-gradient(135deg, var(--accent-dark), var(--accent-color));
+    /* Keep text dark (inherited from .certificate-card or explicitly set) */
+    color: var(--text-primary);
+}
+
+
+/* Legacy styles (you can keep these if you reintroduce them later) */
+.certificate-green {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+    color: var(--text-light);
+}
+
+.certificate-blue {
+    background: linear-gradient(135deg, #0288d1, #4fc3f7);
+    /* Lighter blue theme */
+    color: var(--text-light);
+}
+
+.certificate-gold {
+    background: linear-gradient(135deg, #d35400, #f39c12);
+    /* Richer gold/bronze */
+    color: var(--text-light);
+}
+
+/* ------------------------------------------- */
+
+
+.certificate-card h4 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    font-weight: 800;
+}
+
+.certificate-card p {
+    margin-bottom: 1.25rem;
+    opacity: 0.95;
+}
+
+.certificate-card small {
+    opacity: 0.9;
+    font-style: italic;
+}
+
+.certificate-details {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.certificate-details small {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+}
+
+/* ===== Activity Section ===== */
+.activity-section {
+    margin: 4rem 0;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    background: var(--bg-primary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border-collapse: collapse;
+}
+
+.data-table thead {
+    background-color: var(--primary-light);
+    /* Use lighter primary for table header */
+    color: var(--text-primary);
+}
+
+.data-table th,
+.data-table td {
+    padding: 1.2rem;
+    text-align: left;
+}
+
+.data-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table tbody tr:hover {
+    background-color: var(--secondary-color);
+}
+
+.item-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.item-bottle {
+    background-color: #bbdefb;
+    /* Light Blue */
+    color: #1e88e5;
+    /* Darker Blue */
+}
+
+.item-bag {
+    background-color: #f8bbd0;
+    /* Light Pink/Purple */
+    color: #d81b60;
+    /* Darker Pink */
+}
+
+.item-container {
+    background-color: #ffcc80;
+    /* Light Orange */
+    color: #e65100;
+    /* Darker Orange */
+}
+
+/* ===== Empty State ===== */
+.empty-state {
+    text-align: center;
+    padding: 4rem;
+    /* More padding */
+    background: var(--bg-primary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 2px dashed var(--primary-light);
+    /* Dashed border for visual interest */
+}
+
+.empty-state h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.empty-state p {
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* ===== Form Container ===== */
+.form-container {
+    max-width: 650px;
+    margin: 0 auto;
+    background: var(--bg-primary);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border-top: 3px solid var(--accent-color);
+    /* Subtle accent strip */
+}
+
+.form-container h2 {
+    color: var(--primary-dark);
+    margin-bottom: 0.75rem;
+    font-weight: 800;
+}
+
+.form-container>p {
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+/* ===== Impact Calculator ===== */
+.impact-calculator {
+    /* More pronounced, friendly background */
+    background: linear-gradient(135deg, var(--secondary-color), #e1f7e1);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    margin: 3rem 0;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--primary-light);
+}
+
+.impact-calculator h3 {
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.75rem;
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.impact-item {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--bg-primary);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.impact-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+}
+
+.impact-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ===== Info Box ===== */
+.info-box {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-top: 3rem;
+    border: 1px solid var(--border-color);
+}
+
+.info-box h3 {
+    color: var(--primary-dark);
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 0.5rem;
+}
+
+.factor-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.factor-item span:first-child {
+    font-weight: 600;
+}
+
+.factor-item:last-child {
+    border-bottom: none;
+}
+
+/* ===== Pagination ===== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.page-info {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* ===== Footer ===== */
+.main-footer {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding: 2.5rem 0;
+    text-align: center;
+    margin-top: auto;
+    font-size: 0.9rem;
+}
+
+.main-footer p {
+    margin: 0;
+}
+
+/* ===== Text Utilities ===== */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* ---------------------------------------------------- */
+/* ===== Responsive Design (Mobile Menu Implementation) */
+/* ---------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+    /* 1. Ensure Header Content (Title + Icon) is on one line */
+    .header-content {
+        justify-content: space-between;
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+
+    /* Hide the checkbox itself */
+    .menu-toggle {
+        display: none;
+    }
+
+    /* Show and style the Hamburger Icon (Label) */
+    .nav-icon {
+        display: block;
+        font-size: 2rem;
+        /* Larger icon */
+        cursor: pointer;
+        padding: 5px 10px;
+        color: var(--primary-dark);
+        order: 2;
+        line-height: 1;
+        /* Fix vertical alignment */
+    }
+
+    /* 2. Style the Navigation Menu (Collapsed by default) */
+    .main-nav {
+        display: block;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        flex-direction: column;
+        transition: max-height 0.4s ease-in-out;
+        /* Smoother transition */
+        background-color: var(--bg-primary);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        /* Stronger shadow when open */
+        margin-top: 0.5rem;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: left;
+        padding: 1.2rem 25px;
+        /* More padding */
+        border-bottom: 1px solid var(--border-color);
+        display: block;
+        font-weight: 700;
+    }
+
+    /* Remove border from the last link in the list (already done, ensuring consistency) */
+    .main-nav .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    /* Active link style on mobile */
+    .nav-link.active {
+        background-color: var(--primary-light);
+    }
+
+    /* 3. Open the Menu when the Checkbox is Checked */
+    .menu-toggle:checked~.main-nav {
+        max-height: 500px;
+    }
+
+    /* Mobile adjustments for other elements */
+    .main-content {
+        padding: 2rem 0;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 2rem;
+    }
+
+    .stat-value {
+        font-size: 2.5rem;
+    }
+
+    .leaderboard-table {
+        font-size: 0.9rem;
+    }
+
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 0.8rem;
+    }
+
+    .auth-box {
+        padding: 2rem;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .dashboard-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-container {
+        padding: 2rem;
+    }
+
+    /* Delete button adjustments for mobile */
+    .btn-delete,
+    .btn-danger {
+        padding: 0.7rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .certificate-actions {
+        flex-direction: column;
+    }
+
+    .certificate-actions .btn {
+        width: 100%;
+    }
+
+    /* Form row stacking on mobile */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-group-half {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+
+    .site-title h1 {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+
+    .certificates-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 3rem 0;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 0.8rem 0.5rem;
+        font-size: 0.85rem;
+    }
+}

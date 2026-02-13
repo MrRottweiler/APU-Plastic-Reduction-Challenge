@@ -1,0 +1,86 @@
+CREATE DATABASE IF NOT EXISTS apu_plastic_challenge;
+USE apu_plastic_challenge;
+
+
+-- 1. Users table
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role ENUM('guest','participant','admin') DEFAULT 'guest',
+    status ENUM('active','inactive') DEFAULT 'active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_login TIMESTAMP NULL,
+    INDEX idx_username (username),
+    INDEX idx_email (email)
+);
+
+---
+
+-- 2. Environmental factors table
+CREATE TABLE environmental_factors (
+    factor_id INT AUTO_INCREMENT PRIMARY KEY,
+    item_type ENUM('bottle','bag','container') NOT NULL UNIQUE,
+    co2_saved_grams DECIMAL(8,2) NOT NULL,
+    water_saved_liters DECIMAL(8,2) NOT NULL,
+    data_source VARCHAR(255) NOT NULL,
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    is_active BOOLEAN DEFAULT TRUE
+);
+
+---
+
+-- 3. Logs table (Modified for better relational integrity)
+CREATE TABLE logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    factor_id INT NOT NULL, -- NEW: References environmental_factors(factor_id)
+    quantity INT NOT NULL CHECK (quantity > 0),
+    log_date DATE NOT NULL,
+    -- co2_saved and water_saved columns remain for audit trail/historical record
+    co2_saved DECIMAL(10,2) NOT NULL,
+    water_saved DECIMAL(10,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (factor_id) REFERENCES environmental_factors(factor_id), -- Added Foreign Key
+    INDEX idx_user_date (user_id, log_date),
+    INDEX idx_log_date (log_date)
+);
+
+---
+
+-- 4. Certificates table
+CREATE TABLE certificates (
+    certificate_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    design_style ENUM('professional','modern','classic') DEFAULT 'professional',
+    criteria_type ENUM('manual','auto') DEFAULT 'manual',
+    criteria_value INT DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+---
+
+-- 5. User certificates junction table
+CREATE TABLE user_certificates (
+    user_certificate_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    certificate_id INT NOT NULL,
+    awarded_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    awarded_by INT NOT NULL,
+    personal_message TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (certificate_id) REFERENCES certificates(certificate_id) ON DELETE CASCADE,
+    FOREIGN KEY (awarded_by) REFERENCES users(user_id),
+    UNIQUE KEY unique_user_cert (user_id, certificate_id)
+);
+
+---
+
+-- 6. Insert environmental factors
+INSERT INTO environmental_factors (item_type, co2_saved_grams, water_saved_liters, data_source) VALUES
+('bottle', 500.00, 5.00, 'EPA: Plastic Manufacturing Lifecycle Analysis 2023'),
+('bag', 200.00, 2.00, 'Journal of Cleaner Production, Vol 45, 2022'),
+('container', 300.00, 3.00, 'Environmental Research Letters, Issue 18, 2023');
